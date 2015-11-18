@@ -1,0 +1,43 @@
+<!doctype html>
+<head>
+    <link rel="stylesheet" type="text/ css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js"></script>
+
+    <script id="template" type="x-tmpl-mustache">
+        <div class='container-fluid'>
+            <div class='row'>
+                <div class='col-md-12'><h3>{{name}}</h3></div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4'>
+                    <img src="{{image.medium}}" />
+                </div>
+                <div class='col-md-4'>
+                    <h4>Previous Episode</h4>
+                    <p>
+                        {{_embedded.previousepisode.season}}.{{_embedded.previousepisode.number}}<br>
+                        {{_embedded.previousepisode.name}}<br>
+                        {{_embedded.previousepisode.airdate}}
+                    </p>
+                </div>
+                <div class='col-md-4'>
+                    <h4>Next Episode</h4>
+                    <p>
+                        {{_embedded.nextepisode.season}}.{{_embedded.nextepisode.number}}<br>
+                        {{_embedded.nextepisode.name}}<br>
+                        {{_embedded.nextepisode.airdate}}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </script>
+</head>
+<body>
+    <div id='shows'></div>
+
+    <script src='loadshows.js'></script>
+</body>
+</html>
