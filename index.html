@@ -1,14 +1,17 @@
 <!doctype html>
 <head>
     <link rel="stylesheet" type="text/ css" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/ css" href="main.css">
 
     <script src="lib/jquery-2.1.4.min.js"></script>
     <script src="lib/mustache.min.js"></script>
+    <script src="lib/signals.min.js"></script>
+    <script src="lib/crossroads.min.js"></script>
 
     <script id="template" type="x-tmpl-mustache">
         <div class='container-fluid'>
             <div class='row'>
-                <div class='col-md-12'><h3>{{name}}</h3></div>
+                <div class='col-md-12'><h3><a onclick="crossroads.parse('/show/{{id}}'); return false;">{{name}}</a></h3></div>
             </div>
             <div class='row'>
                 <div class='col-md-4'>
@@ -16,19 +19,44 @@
                 </div>
                 <div class='col-md-4'>
                     <h4>Previous Episode</h4>
-                    <p>
-                        {{_embedded.previousepisode.season}}.{{_embedded.previousepisode.number}}<br>
-                        {{_embedded.previousepisode.name}}<br>
-                        {{_embedded.previousepisode.airdate}}
-                    </p>
+                    <div>
+                        <div class='episode-name'>
+                            {{_embedded.previousepisode.name}}
+                        </div>
+                        <div class='airdate'>
+                            {{_embedded.previousepisode.airdate}}
+                        </div>
+                    </div>
                 </div>
                 <div class='col-md-4'>
                     <h4>Next Episode</h4>
-                    <p>
-                        {{_embedded.nextepisode.season}}.{{_embedded.nextepisode.number}}<br>
-                        {{_embedded.nextepisode.name}}<br>
-                        {{_embedded.nextepisode.airdate}}
-                    </p>
+                    <div>
+                        <div class='episode-name'>
+                            {{_embedded.nextepisode.name}}
+                        </div>
+                        <div class='airdate'>
+                            {{_embedded.nextepisode.airdate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </script>
+        <script id="template2" type="x-tmpl-mustache">
+        <div class='container-fluid'>
+            <div class='row'>
+                <div class='col-md-11'><h3>{{name}} &mdash; Episodes</h3></div>
+                <div class='col-md-1'><a onclick="crossroads.parse('/home'); return false;"><h4>Home</h4></a></div>
+            </div>
+            <div class='row'>
+                <div class='col-md-12'>
+                    <table class='table'>
+                    <tr><th>Season</th><th>Episode</th><th>Name</th><th>Airdate</th></tr>
+                    {{#_embedded.episodes}}
+                        <tr><td>{{season}}</td><td>{{number}}</td><td>{{name}}</td><td>{{airdate}}</td></tr>
+                    {{/_embedded.episodes}}
+                    </table>
                 </div>
             </div>
 
@@ -38,6 +66,7 @@
 <body>
     <div id='shows'></div>
 
+    <script src='routes.js'></script>
     <script src='loadshows.js'></script>
 </body>
 </html>

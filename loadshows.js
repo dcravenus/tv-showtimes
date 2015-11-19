@@ -6,7 +6,7 @@ var show_ids = [
 
 for (var i=0; i<show_ids.length; i++) {
     var id = show_ids[i];
-    url = 'http://api.tvmaze.com/shows/' + id + '?embed[]=nextepisode&embed[]=previousepisode'
+    url = 'http://api.tvmaze.com/shows/' + id + '?embed[]=episodes&embed[]=nextepisode&embed[]=previousepisode'
 
     $.ajax({
         url : url
