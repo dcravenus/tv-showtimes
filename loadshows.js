@@ -1,7 +1,7 @@
 var shows = [];
 var shows_loaded = 0;
 var show_ids = [
-    290, 732, 1866, 396, 49, 80, 1615
+    290, 732, 1866, 49, 80, 1615, 107
 ];
 
 for (var i=0; i<show_ids.length; i++) {
